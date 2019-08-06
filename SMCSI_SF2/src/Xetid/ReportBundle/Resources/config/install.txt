@@ -1,0 +1,23 @@
+Pasos
+
+(1) app/AppKernel.php
+		new Xetid\ReportBundle\XetidReportBundle(),  
+
+(2) app/config/routing.yml
+		xetid_report:
+			resource: "@XetidReportBundle/Resources/config/routing.yml"
+			prefix:   /report
+
+(3) src/Xetid/ServidorImpresionBundle/Resources/views/Default/index.html.twig
+		{% include 'XetidReportBundle:Default:index.html.twig' %}
+		
+(4) src/Xetid/ServidorImpresionBundle/Resources/public/js/app/app.js
+		controllers : [ 'Users', 'Report' ],
+
+(5) src/Xetid/ServidorImpresionBundle/Resources/public/js/app/view/FieldSetHistorial.js
+    src/Xetid/ServidorImpresionBundle/Resources/public/js/app/view/printers/FieldSetImresoras.js
+    src/Xetid/ServidorImpresionBundle/Resources/public/js/app/view/users/FieldSetUsers.js
+		{ xtype:'smcsi.btn.export.pdf' },
+		
+(6) php app/console assets:install web --symlink --relative
+(7) php app/console cache:clear

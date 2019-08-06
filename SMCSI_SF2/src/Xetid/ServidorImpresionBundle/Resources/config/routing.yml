@@ -1,0 +1,118 @@
+servidor_impresion_homepage:
+    pattern:  /
+    defaults: { _controller: ServidorImpresionBundle:Default:render }
+servidor_impresion_printers:
+    pattern:  /servidor/printers
+    defaults: { _controller: ServidorImpresionBundle:Default:getPrinters}
+servidor_impresion_job:
+    pattern:  /servidor/jobhistory
+    defaults: { _controller: ServidorImpresionBundle:Default:getJobHistory }
+servidor_impresion_grupo:
+    pattern:  /servidor/grupoprinters
+    defaults: { _controller: ServidorImpresionBundle:Default:getGrupoPrinters }
+servidor_impresion_grupouser:
+    pattern:  /servidor/grupouser
+    defaults: { _controller: ServidorImpresionBundle:Default:getGroupUsers }
+
+servidor_impresion_isauthenticate:
+    pattern:  /isauthenticate
+    defaults: { _controller: ServidorImpresionBundle:Usuario:isAuthenticate }
+servidor_impresion_login:
+    pattern:  /login
+    defaults: { _controller: ServidorImpresionBundle:Usuario:login }
+servidor_impresion_logout:
+    pattern:  /admin/logout
+    defaults: { _controller: ServidorImpresionBundle:Usuario:logout }
+servidor_impresion_chages_passwprd:
+    pattern:  /admin/chages_password
+    defaults: { _controller: ServidorImpresionBundle:Usuario:changePassword }
+servidor_impresion_admin_addgroups:
+    pattern:  /admin/addgroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:addGroups }
+servidor_impresion_admin_addusers:
+    pattern:  /admin/addgusers
+    defaults: { _controller: ServidorImpresionBundle:Administration:addUsers }
+servidor_impresion_admin_usuario:
+    pattern:  /admin/usuarios
+    defaults: { _controller: ServidorImpresionBundle:Administration:getUsers }
+servidor_impresion_admin_impresoras:
+    pattern:  /admin/impresoras
+    defaults: { _controller: ServidorImpresionBundle:Administration:getPrinters }
+servidor_impresion_admin_addusertogroups:
+    pattern:  /admin/usertogroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:addUserToGroups }
+servidor_impresion_admin_deleteuserfromgroups:
+    pattern:  /admin/deleteuserfromgroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:deleteUserFromGroups }
+servidor_impresion_admin_deletegroups:
+    pattern:  /admin/deletegroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:deleteGroups }
+servidor_impresion_admin_addprintertogroups:
+    pattern:  /admin/addprintertogroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:addPrinterToGroups }
+servidor_impresion_admin_deleteprinterfromgroups:
+    pattern:  /admin/deleteprinterfromgroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:deletePrinterFromGroups }
+servidor_impresion_admin_modprinter:
+    pattern:  /admin/modprinter
+    defaults: { _controller: ServidorImpresionBundle:Administration:modPrinter }
+servidor_impresion_admin_addgroupprinter:
+    pattern:  /admin/addgroupprinter
+    defaults: { _controller: ServidorImpresionBundle:Administration:addGroupPrinter }
+servidor_impresion_admin_deleteprintergroups:
+    pattern:  /admin/deleteprintergroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:deletePrinterGroup }
+servidor_impresion_admin_modgroups:
+    pattern:  /admin/modgroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:modGroups }
+servidor_impresion_admin_deleteusers:
+    pattern:  /admin/deleteusers
+    defaults: { _controller: ServidorImpresionBundle:Administration:deleteUsers }
+servidor_impresion_admin_datosgroups:
+    pattern:  /admin/datosgroups
+    defaults: { _controller: ServidorImpresionBundle:Administration:getQuotaAndConsumo }
+servidor_impresion_admin_modusers:
+    pattern:  /admin/modusers
+    defaults: { _controller: ServidorImpresionBundle:Administration:modUsers }
+servidor_impresion_admin_preparaParaModificar:
+    pattern:  /admin/preparaParaModificar
+    defaults: { _controller: ServidorImpresionBundle:Administration:preparaParaModificar }
+servidor_impresion_admin_addprinter:
+    pattern:  /admin/addprinter
+    defaults: { _controller: ServidorImpresionBundle:Administration:addPrinter }
+servidor_impresion_admin_modprinterbycups:
+    pattern:  /admin/modprinterbycups
+    defaults: { _controller: ServidorImpresionBundle:Administration:modPrinterByCups }
+servidor_impresion_admin_reset:
+    pattern:  /admin/reset
+    defaults: { _controller: ServidorImpresionBundle:Administration:reset }
+servidor_impresion_admin_getip:
+    pattern:  /admin/getip
+    defaults: { _controller: ServidorImpresionBundle:Administration:getIp }
+servidor_impresion_admin_save_changes_ip:
+    pattern:  /admin/save_changes_ip
+    defaults: { _controller: ServidorImpresionBundle:Administration:saveChangesIp }
+servidor_impresion_admin_allowall_or_not:
+    pattern:  /admin/allowall_or_not
+    defaults: { _controller: ServidorImpresionBundle:Administration:allowAllOrNot }
+servidor_impresion_admin_delete_ip:
+    pattern:  /admin/delete_ip
+    defaults: { _controller: ServidorImpresionBundle:Administration:deleteIp }
+servidor_impresion_admin_add_ip:
+    pattern:  /admin/add_ip
+    defaults: { _controller: ServidorImpresionBundle:Administration:addIp }
+servidor_impresion_admin_activate_all:
+    pattern:  /admin/activate_all
+    defaults: { _controller: ServidorImpresionBundle:Administration:activavteAll }
+servidor_impresion_admin_deactivate_all:
+    pattern:  /admin/deactivate_all
+    defaults: { _controller: ServidorImpresionBundle:Administration:deactivateAll }
+servidor_impresion_admin_allowdeny:
+    pattern:  /admin/allowdeny
+    defaults: { _controller: ServidorImpresionBundle:Administration:allowDeny }
+servidor_impresion_admin_saveConfigS:
+    pattern:  /admin/saveConfigS
+    defaults: { _controller: ServidorImpresionBundle:Administration:saveConfigS }
+servidor_impresion_admin_loadConfigS:
+    pattern:  /admin/loadConfigS
+    defaults: { _controller: ServidorImpresionBundle:Administration:loadConfigS }

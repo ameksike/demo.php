@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_pgsql
+    database_host: 10.12.34.24
+    database_port: '5432'
+    database_name: pykotas
+    database_user: postgres
+    database_password: postgres
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 264ee18b36103f3c54810a1c2b3ea53aeb

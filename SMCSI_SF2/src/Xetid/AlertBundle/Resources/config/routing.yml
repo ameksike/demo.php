@@ -1,0 +1,27 @@
+xetid_alert_list:
+    path:     /list
+    defaults: { _controller: XetidAlertBundle:Default:list }
+
+xetid_alert_action:
+    path:     /action
+    defaults: { _controller: XetidAlertBundle:Default:action }
+    
+xetid_alert_type:
+    path:     /type
+    defaults: { _controller: XetidAlertBundle:Default:type }
+    
+xetid_alert_printer:
+    path:     /printer
+    defaults: { _controller: XetidAlertBundle:Default:printer }
+    
+xetid_alert_add:
+    path:     /add
+    defaults: { _controller: XetidAlertBundle:Default:add }
+    
+xetid_alert_delete:
+    path:     /delete
+    defaults: { _controller: XetidAlertBundle:Default:delete }
+    
+xetid_alert_edit:
+    path:     /edit
+    defaults: { _controller: XetidAlertBundle:Default:edit }

@@ -1,0 +1,53 @@
+/*
+ * @author		Antonio Membrides Espinosa
+ * @package    	simpresion
+ * @date		21/06/2015
+ * @copyright  	Copyright (c) 2015-2015 XETID
+ * @license    	XETID
+ * @version    	1.0
+ */
+Ext.define('Printers.view.alert.WinEdit', {
+    extend: 'Ext.window.Window',
+    alias: 'widget.viewAlertWinEdit',
+    title: idiom.alert.winedit.title,
+    
+    minWidth: 250,
+    resizable: false,
+    closeAction: 'hide',
+    frame: true,
+    
+    layout: 'column', 
+    items: [{
+			title: 'Column Layout - Percentage Only',
+			width: 350,
+			height: 250,
+			layout:'column',
+			items: [{
+				title: 'Column 1',
+				columnWidth: 0.25
+			},{
+				title: 'Column 2',
+				columnWidth: 1
+			},{
+				title: 'Column 3',
+				columnWidth: 0.20
+			}]
+		}
+    ],
+    buttons: [{
+            iconCls: 'icon-remove',
+            action: 'cancel',
+            text: idiom.alert.winedit.btn.cancel.title,
+            tooltip: idiom.alert.winedit.btn.cancel.tip
+        },{
+            iconCls: 'icon-apply',
+            action: 'apply',
+            text: idiom.alert.winedit.btn.apply.title,
+            tooltip: idiom.alert.winedit.btn.apply.tip
+        },{
+            iconCls: 'icon-ok',
+            action: 'ok',
+            text: idiom.alert.winedit.btn.ok.title,
+            tooltip: idiom.alert.winedit.btn.ok.tip
+	}]
+})

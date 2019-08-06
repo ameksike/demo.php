@@ -1,0 +1,104 @@
+/*MSG ERROR*/
+.msg h3{
+    /*text-align: center;*/
+}
+#msg-error , #msg-div{
+    position: absolute;
+    left: 40%;
+    top: 10px;
+    width: 300px;
+    z-index: 20000;
+}
+div#imgError{
+    background: url("img/error.png") no-repeat left;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: -25px 0px 0px -25px;
+
+}
+
+div#imgWarning {
+    background: url("img/warning-icon.png") no-repeat left;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: -25px 0px 0px -25px;
+}
+div#imgOk{
+    background: url("img/ok.png") no-repeat left;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: -25px 0px 0px -25px;
+}
+#msg-error .msg {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    background: #F6F6F6;
+    border: 2px solid #CC3333;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #990000;
+    box-shadow: 2px 2px 15px #CC3333;
+
+}
+
+#msg-warning, #msg-div {
+    position: absolute;
+    left: 42%;
+    top: 10px;
+    width: 300px;
+    z-index: 30000;
+}
+
+#msg-warning .msg {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    background: #F6F6F6;
+    border: 1px solid rgba(255, 224, 26, 0.82);
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #7F5214;
+    box-shadow: 2px 2px 10px rgba(181, 161, 17, 0.82);
+}
+
+#msg-warning .msg h3, .msg p {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-family: helvetica, tahoma, verdana, sans-serif;
+}
+
+#msg-error .msg h3 {
+    margin: 0 0 8px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#msg-error .msg p {
+    margin: 0;
+}
+/*END*/
+
+
+#msg-div .msg {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    background: #F6F6F6;
+    border: 2px solid #3764A0;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #04408c;
+    box-shadow: 2px 2px 15px #3764A0;
+
+}
+
+#msg-div .msg h3 {
+    margin: 0 0 8px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#msg-div .msg p {
+    margin: 0;
+}

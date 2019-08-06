@@ -1,0 +1,7 @@
+parameters:
+#    servidor_impresion.example.class: Xetid\ServidorImpresionBundle\Example
+
+services:
+#    servidor_impresion.example:
+#        class: %servidor_impresion.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

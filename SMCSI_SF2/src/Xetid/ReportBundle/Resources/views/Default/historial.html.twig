@@ -1,0 +1,74 @@
+<!--
+ -- @author		Antonio Membrides Espinosa
+ -- @package    simpresion
+ -- @date		05/08/2015
+ -- @copyright  Copyright (c) 2015-2015 XETID
+ -- @license    XETID
+ -- @version    1.0
+-->
+ 
+<table width="100%" border="0">
+  <tr>
+    <td width="80%" height="100" align="center"><p><b>Ministerio de las Fuerzas Armadas Revolucionarias </b></p>
+    <p>{{date}}</p> </td>
+    <td width="20%" rowspan="2" align="center"><img src="{{asset('bundles/xetidreport/images/escudo.jpeg')}}" width="150px" height="150px" /></td>
+  </tr>
+  <tr>
+    <td height="10" align="center"></td>
+  </tr>
+  <tr>
+    <td height="31" colspan="2"><b>Datos del servidor de impresi&oacute;n: </b></td>
+  </tr>
+  <tr>
+    <td height="72" colspan="2"><table width="100%" border="1" cellpadding="2" cellspacing="0" >
+      <tr>
+        <td width="29%" bgcolor="#CCCCCC" align="center"><b>Denominaci&oacute;n</b></td>
+        <td width="24%" bgcolor="#CCCCCC" align="center"><b>N&uacute;mero de inventario</b></td>
+        <td width="26%" bgcolor="#CCCCCC" align="center"><b>Local</b></td>
+        <td width="21%" bgcolor="#CCCCCC" align="center"><b>Operario</b></td>
+      </tr>
+      <tr>
+        <td>{{server.iddenominacion}}</td>
+        <td>{{server.idNoInventario}}</td>
+        <td>{{server.idlocal}}</td>
+        <td>{{server.idoperario}}</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Historial de Impresiones: </b> <br></td>
+  </tr>
+  <tr>
+    <td height="88" colspan="2"><table width="100%" border="1" cellpadding="2" cellspacing="0" >
+      <tr>
+        <td width="13%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>Usuario</b></td>
+        <td width="10%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>Acci&oacute;n</b></td>
+        <td width="13%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>Impresora</b></td>
+        <td width="10%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>P&aacute;ginas</b></td>
+        <td width="26%" colspan="3" bgcolor="#CCCCCC" align="center"><b>Costo</b></td>
+        <td width="14%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>Direcci&oacute;n Ip</b></td>
+        <td width="14%" rowspan="2" bgcolor="#CCCCCC" align="center"><b>Fecha</b></td>
+      </tr>
+      <tr>
+        <td width="9%" bgcolor="#CCCCCC" align="center"><b>P&aacute;gina</b></td>
+        <td width="9%" bgcolor="#CCCCCC" align="center"><b>Trabajo</b></td>
+        <td width="8%" bgcolor="#CCCCCC" align="center"><b>Total</b></td>
+      </tr>
+      
+       {% for i in list %}
+		  <tr>
+			<td>{{ i.user }}</td>
+			<td>{{ i.action }}</td>
+			<td>{{ i.impresora }}</td>
+			<td>{{ i.pag }}</td>
+			<td>{{ i.priceperpage }}</td>
+			<td>{{ i.priceperjob }}</td>
+			<td>{{ i.costo }}</td>
+			<td>{{ i.dirip }}</td>
+			<td>{{ i.fecha }}</td>
+		  </tr>
+      {% endfor %}
+      
+    </table></td>
+  </tr>
+</table>

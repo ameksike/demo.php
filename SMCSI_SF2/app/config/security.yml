@@ -1,0 +1,1 @@
+{ security: { encoders: { Symfony\Component\Security\Core\User\User: sha1 }, providers: { in_memory: { memory: { users: { administrador: { password: 9dbf7c1488382487931d10235fc84a74bff5d2f4, roles: ROLE_ADMIN } } } } }, firewalls: { secured_area: { pattern: ^/, anonymous: null } }, access_control: null } }

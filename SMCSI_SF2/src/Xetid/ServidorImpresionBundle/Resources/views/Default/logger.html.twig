@@ -1,0 +1,40 @@
+{% extends 'XetidExtJsBundle::layout.html.twig' %}
+{% block title %} Adicionar usuario{% endblock %}
+
+{% block stylesheets %}
+    {{parent()}}
+
+{% endblock %}
+{% block body %}
+    <input id="dirCups" name="dirCups" type="text" style="display:none" hidden="true"
+           value="{{ dirCups }}"/>
+    <input id="dirHelp" name="dirHelp" type="text" style="display:none" hidden="true"
+           value="{{ dirHelp }}"/>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/servidorimpresion/js/app/model/ModelUserGrid.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/model/ModelGroupsPrinters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/model/ModelGridPrinters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/model/ModelPrintersGrid.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/model/ModelUser.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/servidorimpresion/js/app/store/StoreUser.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/store/StorePrinters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/store/StoreGridPrinters.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/WinCuota.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/MenuCuota.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/WinAux.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/TreeCuotas.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/TreeGroupPrinters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/TreeAdmin.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/PanelPikWest.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/GridGroupPrinters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/GridGroupUsers.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/view/WinLoggers.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/controller/KeyMapController.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/controller/AppPikotaController.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/servidorimpresion/js/app/appPikota.js') }}" type="text/javascript"></script>
+
+{% endblock %}

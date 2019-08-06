@@ -1,0 +1,10 @@
+xetid_alert:
+    resource: "@XetidAlertBundle/Resources/config/routing.yml"
+    prefix:   /alert
+
+_servidor_impresion_release:
+    resource: "@ServidorImpresionBundle/Resources/config/routing.yml"
+
+xetid_report:
+    resource: "@XetidReportBundle/Resources/config/routing.yml"
+    prefix:   /report

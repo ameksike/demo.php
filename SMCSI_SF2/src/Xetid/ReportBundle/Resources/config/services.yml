@@ -1,0 +1,8 @@
+services:
+    xetid_report.exporter.pdf:
+        class: Xetid\ReportBundle\Service\PdfExporter
+
+    xetid_report.printer_server:
+        class: Xetid\ReportBundle\Service\ServidorImpresion
+        arguments: [@service_container]
+

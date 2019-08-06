@@ -1,0 +1,23 @@
+xetid_report_printerHistory:
+    path:     /printerHistory
+    defaults: { _controller: XetidReportBundle:Default:printerHistory }
+
+xetid_report_printerHistoryPDF:
+    path:     /printerHistory/pdf
+    defaults: { _controller: XetidReportBundle:Default:printerHistoryPDF }
+
+xetid_report_printerList:
+    path:     /printerList
+    defaults: { _controller: XetidReportBundle:Default:printerList }
+
+xetid_report_printerListPDF:
+    path:     /printerList/pdf
+    defaults: { _controller: XetidReportBundle:Default:printerListPDF }
+
+xetid_report_userList:
+    path:     /userList
+    defaults: { _controller: XetidReportBundle:Default:userList }
+
+xetid_report_userListPDF:
+    path:     /userList/pdf
+    defaults: { _controller: XetidReportBundle:Default:userListPDF }

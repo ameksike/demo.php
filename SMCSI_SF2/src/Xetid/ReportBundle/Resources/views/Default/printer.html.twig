@@ -1,0 +1,65 @@
+<!--
+ -- @author		Antonio Membrides Espinosa
+ -- @package    simpresion
+ -- @date		05/08/2015
+ -- @copyright  Copyright (c) 2015-2015 XETID
+ -- @license    XETID
+ -- @version    1.0
+-->
+
+<table width="100%" border="0">
+  <tr>
+    <td width="80%" height="100" align="center"><p><b>Ministerio de las Fuerzas Armadas Revolucionarias </b></p>
+    <p>{{date}}</p> </td>
+    <td width="20%" rowspan="2" align="center"><img src="{{asset('bundles/xetidreport/images/escudo.jpeg')}}" width="150px" height="150px" /></td>
+  </tr>
+  <tr>
+    <td height="10" align="center"></td>
+  </tr>
+  <tr>
+    <td height="31" colspan="2"><b>Datos del servidor de impresi&oacute;n: </b></td>
+  </tr>
+  <tr>
+    <td height="72" colspan="2"><table width="100%" border="1" cellpadding="2" cellspacing="0" >
+      <tr>
+        <td width="29%" bgcolor="#CCCCCC" align="center"><b>Denominaci&oacute;n</b></td>
+        <td width="24%" bgcolor="#CCCCCC" align="center"><b>N&uacute;mero de inventario</b></td>
+        <td width="26%" bgcolor="#CCCCCC" align="center"><b>Local</b></td>
+        <td width="21%" bgcolor="#CCCCCC" align="center"><b>Operario</b></td>
+      </tr>
+      <tr>
+        <td>{{server.iddenominacion}}</td>
+        <td>{{server.idNoInventario}}</td>
+        <td>{{server.idlocal}}</td>
+        <td>{{server.idoperario}}</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Listado de impresoras: </b><br></td>
+  </tr>
+  <tr>
+    <td height="88" colspan="2"><table width="100%" border="1" cellpadding="2" cellspacing="0">
+      <tr>
+        <td width="21%"  bgcolor="#CCCCCC" align="center"><b>Denominaci&oacute;n</b></td>
+        <td width="16%"  bgcolor="#CCCCCC" align="center"><b>Descripci&oacute;n</b></td>
+        <td width="15%"  bgcolor="#CCCCCC" align="center"><strong>Grupo</strong></td>
+        <td width="15%"  bgcolor="#CCCCCC" align="center"><b>Precio por p&aacute;gina </b></td>
+        <td width="16%" align="center"  bgcolor="#CCCCCC"><b>Precio por trabajo </b></td>
+        <td width="17%"  bgcolor="#CCCCCC" align="center"><b>M&aacute;ximo n&uacute;mero de p&aacute;ginas</b></td>
+	  </tr>
+	  
+	   {% for i in list %}
+		  <tr>
+			<td>{{ i.printername }}</td>
+			<td>{{ i.description }}</td>
+			<td>{{ i.groupname }}</td>
+			<td>{{ i.priceperpage }}</td>
+			<td>{{ i.priceperjob }}</td>
+			<td>{{ i.maxjobsize }}</td>
+		  </tr>
+      {% endfor %}
+    
+    </table></td>
+  </tr>
+</table>
