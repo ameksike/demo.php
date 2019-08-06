@@ -1,0 +1,38 @@
+/**
+ * @author      Antonio Membrides Espinosa
+ * @package     simpresion
+ * @date        29/06/2015
+ * @copyright   Copyright (c) 2015-2015 XETID
+ * @license     XETID
+ * @version     1.0
+ */
+#msgDiv
+{
+	color: black;
+	text-align: center;
+	margin: 1px;
+	overflow: auto;
+}
+
+.msgDefault
+{
+	border: 3px solid #167cce;
+	border-radius: 18px;
+	width: 100%;
+	padding: 2 3 2 3;
+	left: 2%;
+	bottom: 3%;
+	position: absolute;
+}
+
+.chartaudit{
+	left: 25%;
+	bottom: 50%;
+	position: absolute;
+}
+
+.servernodes{
+	left: 2%;
+	bottom: 65%;
+	position: absolute;
+}

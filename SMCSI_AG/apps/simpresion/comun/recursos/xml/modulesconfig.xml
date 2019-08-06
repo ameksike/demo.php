@@ -1,0 +1,10 @@
+<?xml version="1.0"?> 
+<config>
+	<conn gestor="pgsql" host="10.12.34.24" port="5432" bd="zeolides" 
+	  usuario="postgres" 
+	  password="40470426127045844009 92305569965142930785 80901760269399011684"> </conn>
+	  
+	<simpresion>
+		<conn esquema="public"/>
+	</simpresion>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsistemas>
+    <metadatos idsubsistema="1" denomsubsistema="Estructura y Composición" uri="metadatos" nombre="metadatos"/>
+    <portal idsubsistema="96" denomsubsistema="Portal" uri="portal" nombre="portal"/>
+    <seguridad idsubsistema="97" denomsubsistema="Seguridad" uri="seguridad" nombre="seguridad"/>
+    <traza idsubsistema="98" denomsubsistema="Traza" uri="traza" nombre="traza"/>
+    <notificaciones idsubsistema="95" denomsubsistema="Notificaciones" uri="herramientas/notificaciones" nombre="notificaciones"/>
+    <pvd idsubsistema="104" denomsubsistema="Persona" uri="pvd" nombre="pvd"/>
+    <controlpanel idsubsistema="100" denomsubsistema="Panel de control" uri="controlpanel" nombre="controlpanel"/>
+    <package idsubsistema="101" denomsubsistema="Empaquetador" uri="package" nombre="package"/>
+    <zeolhelp idsubsistema="200" denomsubsistema="Ayuda del sistema" uri="zeolhelp" nombre="zeolhelp"/>
+    <xmetacomponent idsubsistema="201" denomsubsistema="Metadatos" uri="herramientas/xmetacomponent" nombre="xmetacomponent"/>
+    <ide idsubsistema="202" denomsubsistema="IDE" uri="herramientas/ide" nombre="ide"/>
+    <gestornc idsubsistema="203" denomsubsistema="Gestor NC" uri="herramientas/gestornc" nombre="gestornc"/>
+    <ayuda idsubsistema="204" denomsubsistema="Ayuda" uri="herramientas/ayuda" nombre="ayuda"/>
+<servidorImpresion idsubsistema="300000001748" denomsubsistema="Servidor Impresio" uri="servidorImpresion" nombre="servidorImpresion"/><simpresion idsubsistema="300000001868" denomsubsistema="Simpresion" uri="simpresion" nombre="simpresion"/></subsistemas>

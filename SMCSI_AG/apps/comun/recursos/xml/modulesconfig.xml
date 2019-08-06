@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <conn bd="zeolides" gestor="pgsql" host="10.12.34.24" usuario="zeolides"
+          password="74144226958272815089 47449500496945353204 16905952519330303663 49601985842461726884 8541063394422092086"
+          port="5432"/>
+    <security>
+        <ttl>-1</ttl>
+    </security>
+    <seguridad>
+        <conn esquema="mod_seguridad"/>
+    </seguridad>
+    <traza>
+        <conn esquema="mod_traza"/>
+    </traza>
+    <herramientas>
+        <notificaciones>
+            <conn esquema="mod_notificaciones"/>
+        </notificaciones>
+       
+        <xmetacomponent>
+            <conn esquema="mod_metadata"/>
+        </xmetacomponent>
+    </herramientas>    
+    <pvd>
+        <conn esquema="mod_persona"/>
+    </pvd>
+    <metadatos>
+        <conn esquema="mod_estructuracomp"/>
+    </metadatos>
+</config>

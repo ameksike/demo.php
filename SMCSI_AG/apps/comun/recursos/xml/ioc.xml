@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ioc>
+	<seguridad src="seguridad/comun/recursos/xml/ioc.xml" />
+	<traza src="traza/comun/recursos/xml/ioc.xml" />
+	<metadatos src="metadatos/comun/recursos/xml/ioc.xml" />
+	<pvd src="pvd/comun/recursos/xml/ioc.xml" />
+    <configsecodena src="configsecodena/comun/recursos/xml/ioc.xml"/>
+	<portal src="portal/comun/recursos/xml/ioc.xml" />
+	<ayuda src="herramientas/comun/recursos/xml/ioc.xml" />
+	<notification src="herramientas/comun/recursos/xml/ioc.xml" />
+    <controlpanel src="controlpanel/comun/recursos/xml/ioc.xml" />
+    <gestornc src="herramientas/comun/recursos/xml/ioc.xml"/>
+    <package src="package/comun/recursos/xml/ioc.xml" />
+    <zeolhelp src="zeolhelp/comun/recursos/xml/ioc.xml" />
+</ioc>
