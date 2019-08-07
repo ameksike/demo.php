@@ -1,0 +1,35 @@
+1- Crear una capa relieve (no menos un raster)
+2- Adicionar 1-n raster a una capa 
+3- Generar de una capa raster los modelos de sombra y contorno
+
+
+cd /var/www/map/basic/data/org/
+gdaltindex Cuba_Relieve.shp ../gdal/srtm/*.hgt
+ [-z ZFactor (default=1)] 
+ [-s scale* (default=1)] 
+ [-az Azimuth (default=315)] 
+ [-alt Altitude (default=45)]
+ [-b Band (default=1)] 
+ [-of format] 
+ [-co "NAME=VALUE"]* [-q]
+
+cd /var/www/map/basic/data/gdal/srtm/
+../cmds/shade_url.sh
+../cmds/contour_url.sh
+
+
+proyecto@me-gis:/var/www/map/basic/data/gdal/srtm$ ../cmds/contour_url.sh
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+
+
+gdaltindex Cuba_Shade.shp ../gdal/shad/*.tif
+Creating new index file...
+gdaltindex Cuba_Contour.shp ../gdal/cont/*.shp
+
+
+shp2img -m generated_mapfile.map -o test.png
+
+
+

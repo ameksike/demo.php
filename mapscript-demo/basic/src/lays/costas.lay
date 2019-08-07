@@ -1,0 +1,26 @@
+  LAYER
+    CONNECTION "../data/org/Cuba_Costas.dxf"
+    CONNECTIONTYPE OGR
+    NAME "costas"
+    STATUS DEFAULT
+    TYPE POINT
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 360
+        COLOR 200 11 2
+        OUTLINECOLOR 50 90 0
+        SYMBOL 0
+        WIDTH 1
+      END
+      STYLE
+        ANGLE 360
+        BACKGROUNDCOLOR 0 0 0
+        COLOR 0 0 255
+        OUTLINECOLOR 0 0 255
+        SIZE 3
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+  END

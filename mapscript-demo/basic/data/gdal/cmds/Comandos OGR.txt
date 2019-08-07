@@ -1,0 +1,15 @@
+Comandos para OGR
+
+;Obteniendo la capa 'mtd_500000.vialespl' de la base de datos , importandola como archivo .shp
+root@Konoha:~# ogr2ogr -f "ESRI Shapefile" /media/datos/www/GIS/pruebaogr/prueba.shp PG:"host=10.12.170.159 user=segsig dbname=DATOSSIG password=segsig2008" "mtd_500000.vialespl"
+
+;Convirtiendo el archivo prueba .shp a formato de mapinfo pruebas.tab
+root@Konoha:~# ogr2ogr -f "MapInfo File" /media/datos/www/GIS/pruebaogr/pruebas.tab /media/datos/www/GIS/pruebaogr/prueba.shp
+
+;Convirtiendo el archivo pruebas.tab de mapinfo al archivo pruebasg.gml de GML 
+root@Konoha:~# ogr2ogr -f "GML" /media/datos/www/GIS/pruebaogr/pruebasg.gml /media/datos/www/GIS/pruebaogr/pruebas.tab
+
+;Exportando el archivo prueba.shp a base de datos postgresql
+root@Konoha:~# ogr2ogr -f "PostgreSQL" PG:"host=localhost user=segsig dbname=pepe password=segsig2008" /media/datos/www/GIS/pruebaogr/prueba.shp
+
+

@@ -1,0 +1,12 @@
+//comando sencillo para convertir a PNG la capa 4978-I-a.tif obteniendo como salida ale.png
+root@Konoha:~# gdal_translate -of "PNG" /media/datos/Raster25000Oriente/oriente/holguin/4978-I-a.tif /media/datos/Escritorio/ale.png 
+
+//comando para convertir a PNG la capa 4978-I-a.tif obteniendo como salida ale.png especificando tamano de la imagen de salida asi como proyeccion
+root@Konoha:~# gdal_translate -of "PNG" /media/datos/Raster25000Oriente/oriente/holguin/4978-I-a.tif /media/datos/Escritorio/ale.png -outsize 1000 1000 -a_srs EPSG:4267
+
+//comando sencillo para crear shp a partir de las imagenes raster 
+root@Konoha:~# gdaltindex /media/datos/Escritorio/alejandro.shp /media/datos/Raster25000Oriente/oriente/santiago/*.tif
+
+
+cd /var/www/map/basic/data/org
+gdaltindex Cuba_Relieve.shp ../gdal/srtm/*.hgt

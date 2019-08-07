@@ -1,0 +1,161 @@
+MAP
+  EXTENT -85.1920574440399 17.7331838565022 -73.8079425559601 26.2668161434978
+  IMAGECOLOR 0 0 56
+  IMAGETYPE png24
+  SIZE 640 480
+  STATUS ON
+  UNITS METERS
+  NAME "Cuba"
+
+  OUTPUTFORMAT
+    NAME "png24"
+    MIMETYPE "image/png; mode=24bit"
+    DRIVER "GD/PNG"
+    EXTENSION "png"
+    IMAGEMODE "RGB"
+    TRANSPARENT FALSE
+  END
+
+  PROJECTION
+    "init=epsg:4267"
+  END
+  LEGEND
+    IMAGECOLOR 255 255 255
+    KEYSIZE 20 10
+    KEYSPACING 5 5
+    LABEL
+      SIZE MEDIUM
+      TYPE BITMAP
+      BUFFER 0
+      COLOR 0 0 0
+      FORCE FALSE
+      MINDISTANCE -1
+      MINFEATURESIZE -1
+      OFFSET 0 0
+      PARTIALS TRUE
+    END
+    POSITION LL
+    STATUS OFF
+  END
+
+  QUERYMAP
+    COLOR 255 255 0
+    SIZE -1 -1
+    STATUS OFF
+    STYLE HILITE
+  END
+
+  SCALEBAR
+    ALIGN CENTER
+    COLOR 0 0 0
+    IMAGECOLOR 255 255 255
+    INTERVALS 4
+    LABEL
+      SIZE MEDIUM
+      TYPE BITMAP
+      BUFFER 0
+      COLOR 0 0 0
+      FORCE FALSE
+      MINDISTANCE -1
+      MINFEATURESIZE -1
+      OFFSET 0 0
+      PARTIALS TRUE
+    END
+    POSITION LL
+    SIZE 200 3
+    STATUS OFF
+    STYLE 0
+    UNITS MILES
+  END
+
+  WEB
+    IMAGEPATH "log/img/"
+    IMAGEURL "log/img/"
+    QUERYFORMAT text/html
+    LEGENDFORMAT text/html
+    BROWSEFORMAT text/html
+  END
+
+  LAYER
+    CONNECTION "/var/www/map/mapscript/src/../data/org/Cuba_Provincias.tab"
+    CONNECTIONTYPE OGR
+    NAME "contornos"
+    STATUS DEFAULT
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      EXPRESSION ( " [provincia] " =~ /Cien/ )
+      STYLE
+        ANGLE 360
+        COLOR 50 250 155
+        OUTLINECOLOR 0 0 0
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+    CLASS
+      STYLE
+        ANGLE 360
+        COLOR 200 150 2
+        OUTLINECOLOR 0 0 0
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "/var/www/map/mapscript/src/../data/org/Cuba_Caminos.gml"
+    CONNECTIONTYPE OGR
+    NAME "caminos"
+    STATUS DEFAULT
+    TYPE LINE
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 360
+        COLOR 20 120 20
+        OUTLINECOLOR 1 3 4
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "/var/www/map/mapscript/src/../data/org/Cuba_Puentes.shp"
+    CONNECTIONTYPE OGR
+    NAME "puentes"
+    STATUS DEFAULT
+    TYPE LINE
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 360
+        COLOR 200 11 2
+        OUTLINECOLOR 23 20 10
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "/var/www/map/mapscript/src/../data/org/Cuba_Costas.dxf"
+    CONNECTIONTYPE OGR
+    NAME "costas"
+    STATUS DEFAULT
+    TYPE POINT
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 360
+        COLOR 23 50 90
+        OUTLINECOLOR 23 20 10
+        SYMBOL 0
+        WIDTH 1
+      END
+    END
+  END
+
+END

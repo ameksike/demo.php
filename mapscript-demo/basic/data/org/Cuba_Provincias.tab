@@ -1,0 +1,27 @@
+!table
+!version 450
+!charset Neutral
+
+Definition Table
+  Type NATIVE Charset "Neutral"
+  Fields 20
+    CTE Integer ;
+    brushbab Integer ;
+    brushback Integer ;
+    brushbag Integer ;
+    brushbar Integer ;
+    brushfob Integer ;
+    brushfog Integer ;
+    brushfor Integer ;
+    brushfore Integer ;
+    brushpatt Integer ;
+    codprov Char (10) ;
+    colorpen Integer ;
+    estilo Char (50) ;
+    id Integer ;
+    pencob Integer ;
+    pencog Integer ;
+    pencor Integer ;
+    penpatt Integer ;
+    penwidth Integer ;
+    provincia Char (40) ;
