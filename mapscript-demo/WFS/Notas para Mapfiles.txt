@@ -1,0 +1,197 @@
+Configuración MapFile para servir capas WFS
+Al igual que en el soporte WMS, WFS publicación se habilita agregando ciertos metadatos de palabras clave / valor magia
+a un MapFile.
+MapServer servirá e incluir en sus capacidades WFS sólo las capas que cumplan las siguientes condiciones:
+     • La fuente de datos es de tipo vectorial (Shapefile, OGR, PostGIS, SDE, SDO, ...)
+     Debe establecerse • nombre de la capa. Nombres de las capas deben comenzar con una letra al configurar un servidor de la WFS(nombres de las capas  no debe comenzar con un dígito o tener espacios en blanco).
+   • tipo de capa es uno de: línea, punto, polígono
+   • El "wfs_onlineresource" metadatos:     Los metadatos wfs_onlineresource se encuentra en el mapa de metadatos de objetos web y especifica la URL que debe ser   utiliza para acceder al servidor. Esto es necesario para la salida GetCapabilities. Si no se proporciona wfs_onlineresource   entonces MapServer tratará de proporcionar un uno por defecto utilizando el nombre del script y el nombre de host, pero usted no debe contar    en que demasiado. Se recomienda encarecidamente que usted proporciona los metadatos wfs_onlineresource.
+      Vea la sección 12.3.3 de la especificación de la WFS1.0.0 para toda la historia de la dirección de recursos en línea. Básicamente,      lo que necesita es una dirección URL HTTP completo incluyendo el prefijo http://, el nombre de host, nombre de script, potencialmente, un      "Map =" parámetro y y terminado por "?" O "&".
+      Este es un recurso en línea URL válida:
+      http://my.host.com/cgi-bin/mapserv?map=mywfs.map y      Mediante la creación de un script de envoltorio en el servidor, es posible ocultar el "map =" parámetro de la URL y luego   URL recurso en línea del servidor podría ser algo como:
+      http://my.host.com/cgi-bin/mywfs?
+      Esto se explica con más detalle en la sección "Más información sobre la línea URL de Recursos" de el servidor WMS
+      documento.
+   • Los metadatos "wfs_enable_request" (ver más abajo).
+Ejemplo WFSservidor Mapfile
+El siguiente es un ejemplo de un archivo de asignaciones mínimo WFS servidor desnudo. Tenga en cuenta las observaciones de los parámetros requeridos.
+MAP
+  NAME "WFS_server"
+  STATUS ON
+  SIZE 400 300
+  SYMBOLSET "../etc/symbols.txt"
+  EXTENT -180 -90 180 90
+  UNITS DD
+  SHAPEPATH "../data"
+  IMAGECOLOR 255 255 255
+  FONTSET "../etc/fonts.txt"
+  #
+  # Start of web interface definition
+  #
+  WEB
+    IMAGEPATH "/ms4w/tmp/ms_tmp/"
+    IMAGEURL "/ms_tmp/"
+    METADATA
+      "wfs_title"          "WFS Demo Server for MapServer" ## REQUIRED
+      "wfs_onlineresource" "http://demo.mapserver.org/cgi-bin/wfs?" ## Recommended
+      "wfs_srs"            "EPSG:4326 EPSG:4269 EPSG:3978 EPSG:3857" ## Recommended
+      "wfs_abstract"       "This text describes my WFS service." ## Recommended
+      "wfs_enable_request" "*" # necessary
+    END
+  END
+  PROJECTION
+    "init=epsg:4326"
+  END
+  #
+  # Start of layer definitions
+  #
+  ##################
+  # World Continents
+  ##################
+  LAYER
+    NAME "continents"
+    METADATA
+      "wfs_title"         "World continents" ##REQUIRED
+      "wfs_srs"           "EPSG:4326" ## REQUIRED
+      "gml_include_items" "all" ## Optional (serves all attributes for layer)
+      "gml_featureid"     "ID" ## REQUIRED
+      "wfs_enable_request" "*"
+    END
+    TYPE POLYGON
+    STATUS ON
+    DATA ’shapefile/countries_area’
+    PROJECTION
+      "init=epsg:4326"
+    END
+    CLASS
+      NAME ’World Continents’
+      STYLE
+        COLOR 255 128 128
+        OUTLINECOLOR 96 96 96
+      END
+    END
+  END #layer
+END #mapfile
+
+*******************************************************************************************************
+Reglas para el manejo de SRS en MapServer WFS
+La WFS especificación OGC 1.0 no permite una capa (tipo de entidad) que se anuncian en más de un SRS. además,no hay SRS predeterminado que se aplica a todas las capas de forma predeterminada. Sin embargo, es posible tener cada capa en un servidor de la WFS anunciado en un SRS diferente.
+La WFS especificación OGC 1.1 permite que más de un SRS que se anuncian, y una de las EVS se anunciará como el SRS predeterminado (el SRS defecto será el primero en la lista especificada en los wfs_srs / ows_srs metadatos).
+Así es como MapServer decide el SRS para anunciar y utilizar para cada capa en el WFS
+      • Si un mapa de nivel superior SRS es definida entonces este SRS se utiliza y se aplica a todas las capas (tipos de entidades) en esta Cumbre. en
+        este caso el SRS de las capas individuales se ignora simplemente incluso si se establece.
+      • Si no se define un mapa de nivel superior SRS, a continuación, cada capa se anuncia en su propia SRS en las capacidades.
+Nota: Por "SRS es definida", nos referimos tanto la presencia de un objeto de proyección definida utilizando un código EPSG, o
+de un wfs_srs / ows_srs metadatos en este nivel.
+Nota: En el mapa de nivel superior los wfs_srs / ows_srs valor metadatos tendrán prioridad sobre los contenidos de la proyección
+Bloque CIÓN.
+En el nivel de la capa, si ambos wfs_srs / ows_srs metadatos y el objeto PROYECCIÓN tienen valores diferentes, entonces
+los wfs_srs / ows_srs metadatos define la proyección de utilizar en la publicidad de esta capa (suponiendo que no hay nivel superior
+mapa SRS), y el valor de proyección se supone que la proyección de los datos. Así que esto significa que los datos haría
+se reproyectado del SRS PROYECCIÓN al definido en los wfs_srs / ows_srs metadatos antes de ser servido
+a los clientes de la WFS
+Confuso? Como regla general, basta con establecer las wfs_srs / ows_srs a nivel del mapa (en los metadatos web) y no establecer la
+wfs_srs / ows_srs metadatos a nivel de capa y las cosas van a funcionar bien para la mayoría de los casos. 
+***********************************************************************************
+Orientación del Eje en la WFS 1.1
+El orden de los ejes en las versiones anteriores de las especificaciones de WFS fue usar siempre hacia el Este (X o lon) y Norte (y or
+lat). WMS 1.1 especifica que, dependiendo de la SRS particular, el eje x puede o puede no ser orientada West-a-Oriente, y
+el eje y puede o no puede estar orientada Sur a Norte. La operación representación WFS contabilizará para eje. este
+afecta a algunos de los códigos EPSG que se utilizan comúnmente como ESPG: 4326. La implementación actual hace
+asegurarse de que las coordenadas devuelve al servidor para la solicitud GetFeature reflejan las órdenes ejes inversos de los códigos EPSG
+entre 4000 y 5000.
+*****************************************************************************************
+Para poder controlar los resultados del documento generado el protocolo WFS nos ofrece una serie de parámetros que son pasados vía web, junto con el nombre del recurso. Estos parámetros son los siguientes:
+
+    Request: es el más importante, puesto que es el que indica que acción tomará. Puede tener los siguientes valores:
+        GetFeature: obtiene elementos del mapa en forma de documento estructurado
+        GetCapabilities: determina las características del recurso WFS
+    Version: indica la versión del servicio WFS según el OGC
+    TipeName especifica la capa de mapa que queremos obtener. En el caso de WFSSIGUA será cualquiera de estos valores: Edificios, PB, P1, P2, P3, P4 o Ps.
+    SRS: Indica la proyeccción cartográfica. En nuestro caso será 23030 (por defecto si no se indica la propiedad SRS)
+    Bbox: Coordenadas de un rectángulo necesarias para acotar el área de estudio.
+******************************************************************************************
+request=GetFeature:
+
+El valor GetFeature del parámetro request nos permite obtener un documento estructurado (XML) con la cartografía que hemos demandado Es la llamada más usada de los WMS y el que le da sentido a esta especificación. Debe de estar acompañada de otros parámetros relacionados:
+
+    version: (obligatorio) indica la versión de la especificación WMS del servicio según el OGC. En nuestro caso nuestro servidor ofrece la versión 1.1.1
+    typename: (obligatorio) en este parámetro hay que indicar la capas que queremos obtener.
+    srs: (opcional) indica la referencia espacial que queremos utilizar, o lo que es lo mismo, la proyección cartográfica. Su valor es un número que representa una determinada proyección. Estos códigos han sido definidos por el European Petroleum Survey Group (EPSG). El número de proyecciones soportadas es de  3162, pero sólo ofrecemos a los usuarios  las más utilizadas en España. Estas son las siguientes:
+        23030: UTM - Proyectada, Datum Europeo de 1950, Huso 30, , proyección Transversa de Mercator. Es la utilizada por defecto y la más utilizada en España. Hasta hace muy poco era el sistema espacial de referencia del país.
+        3042: ETRS 89, GRS 1980, Geodésico. Es muy similar a la Geográfica con datum WGS84.
+        4326: Geodésica. Es el sistema de referencia más utilizado por su caracter global. Es el utilizado por los receptores GPS y en la mayoría de los programas de difusión cartográfica global (Google Earth o Google Maps). Pará zonas muy pequeñas produce muchas distorsiones.
+        25830: UTM - ETRS 89, huso 30, proyección Transversa de Mercator. Es la referencia espacial utilizada actualmente en España para el ámbito del huso 30. Para Baleares y Cataluña es la 25831, Galicia es la 28529, y Canarias tiene la 28528.
+    bbox: (opcional, pero recomendado)Este parámetro indica la zona geográfica que queremos visualizar en la imagen. A efectos prácticos indica la ubicación de un rectángulo en un mapa. Consta de cuatro valores separados por comas listados en el orden siguiente: minx,miny,maxx,maxy, en las mismas coordenadas que el sistema de referencia utilizado:
+        minx: valor X de la esquina inferior izquierda
+        miny: valor Y de la esquina inferior izquierda
+        maxx:  valor X de la esquina superior derecha
+        maxxy: valor Y de la esquina superior derecha
+        http://www.sigua.ua.es/cgi-bin/siguawms?
+SERVICE=WFS&
+VERSION=1.0.0&
+REQUEST=getfeature&
+TYPENAME=Edificios
+****************************************************************************************************
+
+Pon a prueba tu WFS servidor
+Validar los Metadatos Capacidades
+Bien, ahora que tenemos un archivo de asignaciones, tenemos que comprobar las capacidades XML devueltos por el servidor para asegurarse de que nada
+que falta.
+El uso de un navegador web, acceder a los recursos en línea URL del servidor al que se agrega el parámetro "REQUEST = GetCapabilities "hasta el final, por ejemplo,
+http://demo.mapserver.org/cgi-bin/wfs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetCapabilities
+Si todo ha ido bien, usted debe tener un documento completo de capacidades de XML. Búsqueda por la palabra "WARNING "... Insertos MapServer comentarios XML que comienzan con "<-ADVERTENCIA:" en la salida XML si detecta que falta
+parámetros de archivo de asignaciones o elementos de metadatos. Si usted nota cualquiera de advertencia en la salida XML a continuación, usted tiene que fijar todos ellos
+antes de poder registrar su servidor con un cliente de WFS, de lo contrario las cosas probablemente no van a funcionar.
+Nota: Se requiere que el parámetro de servicio para todas las solicitudes de la WFS. Cuando se produce una petición, se pasa a través de WMS,
+WFS y WCS en MapServer (en ese orden) hasta que uno de los servicios responden a la misma.
+********************************
+Prueba con una Solicitud GetFeature
+Bien, ahora que sabemos que nuestro servidor puede producir un XML válido GetCapa-
+respuesta bilidades que debe probar la solicitud GetFeature. Simplemente añadiendo "SERVICE = WFS y VERSION = 1.0.0 Y PETICION = GetFeature y TYPENAME = yourlayername1, yourlayername2 "para
+URL del servidor debe devolver el GML asociado con esas capas.
+
+Prueba con un cliente real
+Si usted tiene acceso a un cliente de la WFS a continuación, registrar los recursos en línea de su nuevo servidor con él y que debe estar apagado y
+corriendo.
+Si usted no tiene su propio cliente de WFS ya instalado, he aquí algunas sugerencias:
+     • MapServer sí mismo puede ser utilizado como un cliente WFS, ver el HowTo Client la WFS.
+     • Quantum GIS es un paquete GIS completo, que incluye soporte al cliente la WFS. (recomendado)
+     • Deegree proporciona un cliente de la WFS.
+     • uDig puede añadir capas de servidores WMS / la WFS.
+     • El owsview Visor Generador Client es una aplicación online que permite a los usuarios validar capacidades WFS
+        XML (no le permite ver los datos de WFS).
+Soporte para peticiones GET y POST
+A partir de la versión 4.2 MapServer soporta peticiones POST XML con codificación y solicitudes GET. El defecto en
+MapServer es POST.
+Apoyo a Filter Encoding
+A partir de la versión 4.2 MapServer soporta Filter Encoding (FE) de WFS GetFeature solicitudes. Para obtener más información
+en el lado del servidor de Filter Encoding ver el HowTo Filter Encoding.
+***************************************************************************************
+MapServer WFS Extensiones
+StartIndex Además de los MAXFEATURES = n de palabras clave, MapServer soporta también una StartIndex = n clave
+       palabra en WFS GetFeature solicitudes. Esto se puede utilizar para omitir algunas de las características del conjunto de resultados y en combinación
+       con MAXFEATURES prevé la posibilidad de utilizar WFS GetFeature a la página a través de resultados. Tenga en cuenta que
+       StartIndex = 1 significa comenzar con la primera característica, ninguno saltar.
+OUTPUTFORMAT Normalmente OUTPUTFORMAT debe ser GML2 de WFS 1.0 y, o bien "text / xml; sub-
+       type = gml/2.1.2 "o" text / xml; subtipo = gml/3.1.1 "para WFS 1.1. Sin embargo, como una extensión de la especificación, se
+       También es posible configurar MapServer para una variedad de otros formatos de salida característica. Esto se discute en algunos
+       detalle en el documento de salida OGR.
+***************************************************************************************
+9.6.3 Sección de Referencia
+La siguiente metadatos están disponibles en la configuración de la WFS servidor mapfile:
+Nota: Cada uno de los metadatos a continuación también puede ser referido como 'ows_ *' en vez de 'wfs_ *'. MapServer trata del 'wfs_ *'
+metadatos en primer lugar, y si no se encontró prueba el 'ows_ *' nombre correspondiente. El uso de este reduce la cantidad de duplicación
+en mapfiles que soportan múltiples interfaces OGC ya que "ows_ *" metadatos se puede utilizar en casi todas partes de común
+elementos de metadatos compartidos por múltiples interfaces OGC.
+Object Metadata Web
+ows_schemas_location (Opcional) (Anote el nombre ows_schemas_location y no wfs / _ ... esto es porque todos OGC
+       Servicios Web (OWS) utilizan los mismos metadatos) Raíz del árbol web donde la familia de OGC WFS XMLSchema
+       archivos se encuentran. Esto debe ser una URL válida que se encuentran los archivos xsd reales., Si usted quiere que su salida de WFS
+       para validar en un analizador XML de validación. El valor predeterminado es http://schemas.opengis.net. Ver http://ogc.dmsolutions.ca para
+       un ejemplo de un árbol de esquema válido.
+
+**************************************************************************************
+9.6.4 Las tareas pendientes y limitaciones conocidos
+    • Esto es sólo un WFS básico (de sólo lectura): solicitudes de transacciones no son compatibles y probablemente nunca dada la  naturaleza de MapServer. GeoServer o TinyOWS se recomienda para aquellos que necesitan apoyo WFS-T.
+    • WFS spec. parece requerir que las características de un tipo de entidad dada deben ser todos del mismo tipo de geometría (punto, línea, polígono). Esto funciona bien para shapefiles, pero algunos formatos de origen de datos soportados por MapServer permite  tipos de geometría mixtas en una sola capa y esto va en contra de la WFS spec. Sugerencias sobre cómo manejar este  son bienvenidos (enviar sugerencias a la lista de correo MapServer-dev.

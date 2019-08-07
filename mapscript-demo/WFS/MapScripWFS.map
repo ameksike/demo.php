@@ -1,0 +1,64 @@
+MAP
+      NAME "WFS_server"
+      STATUS ON
+      SIZE 400 300
+      SYMBOLSET "../../GIS/Genesig/server_conf/geoweb/Simbolizacion/MTD_250000/fichero_estilos.sym"	
+      EXTENT -98.8160982651849 13.4304082100633 -63.9556696802078 30.4475842491753
+      UNITS METERS
+      SHAPEPATH "../../GIS/Genesig/server_conf/geoweb/almacen_vectorial" ## Ruta donde se alamacenan los datos geograficos los que seran visualizados en las distintas LAYERS(Solo cuando se usa .shp)(en el caso de postGIS solo se pone por defecto esta dir).
+      IMAGECOLOR 255 255 255
+      FONTSET "../../GIS/Genesig/server_conf/geoweb/Simbolizacion/MTD_250000/fonts.txt"  ## Determina la ruta completa del archivo truetype fontlist. Este archivo lista cada una de las fuentes disponibles
+
+      WEB                   ##define cómo operará la interface Web
+              IMAGEPATH "ms_tmp/"
+              IMAGEURL "ms_tmp/"
+              METADATA                ## SE basará en estos metadatos para confeccionar el archivo de capacidades.
+                      
+
+                       "wfs_title" "GMap WFS Demo Server" ## REQUIRED
+                       "wfs_onlineresource" "http://10.12.167.32/cgi-bin/mapserv?" ## Recommended es el enlace al servidor WFS
+                       "wfs_srs" "EPSG:4267  ## Recommended
+                       "wfs_geometry_element_name" "MS_GEOMETRY"
+                       "ows_schemas_location" "http://ogc.dmsolutions.ca" ## Optional
+                       "wfs_abstract" "Servidor de Features construido para ser utilizado como módulo de Instalación 
+                                       de Mapserver como  WFS  Contiene datos generales de cobertura mundial.
+                                       Es un Servidor de Features en Red que cumple  con la Especificación del 
+                                       OGC WFS 1.0.0. Es un WFS básico que permite realizar peticiones del 
+                                       tipoGetCapabilities  DescribeFeatureType y GetFeature. No soporta Transacciones 
+                                       (intentar  actualizar  borrar features). En cuanto a filtros solo soporta BBox."
+              END
+      END
+      PROJECTION
+              "init=epsg:4267"
+      END
+      LAYER
+              NAME "Cartograma_25000"
+              METADATA            ## SE basará en estos metadatos para confeccionar el archivo de capacidades.
+                       "wfs_title" "Cartograma_25000" ## REQUIRED
+                       "wfs_geometry_element_name" "MS_GEOMETRY" 
+                       "gml_featureid" "ID" ## REQUIRED
+                       "gml_include_items" "all" ## Optional (serves all attributes for layer)
+                                     
+               END
+               CONNECTIONTYPE POSTGIS #: Define el tipo de conexión, que por defecto es local, este parámetro debe incorporarse en el caso que se desee incluirse una capa remota,los posibles valores son: [local | sde | ogr | postgis | oraclespatial | wms]
+               CONNECTION "host=10.12.170.140 port=5432 dbname=DATOSSIG user=ing password=ingsig09Grm" ##: Para cada capa de información que contendrá el servicio, deberádefinirse el parámetro connection, especificando de esta forma la conexión a la fuente de datos.
+
+               TYPE POLYGON
+               STATUS ON
+               DATA "the_grom from geometry_columns" ##Determina la fuente de datos a utilizar, en caso de que se utilice el formato PostGIS,entonces se especifica el campo geoespacial de la base de datos a utilizar y los atributos connection yconnectiontype.
+
+               PROJECTION
+                      "init=epsg:4267"
+               END
+               DUMP TRUE ## REQUIRED
+               CLASS
+                      NAME "mundo"
+                      STYLE
+                               COLOR 200 255 0
+                               OUTLINECOLOR 120 120 120
+                      END
+                      ##TEMPL ATE "ttt_query.html"
+               END
+       END # Layer
+END # Map File
+
