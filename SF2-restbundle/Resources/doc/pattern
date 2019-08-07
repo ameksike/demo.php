@@ -1,0 +1,16 @@
+
+<question> Here we have all request pattern for example resorse name "elemet"</question>
+
+<info> Method:	URI   		=>  Action's name in controller </info>
+<comment>  GET:</comment> 		/elemet  	=>  <comment> getAllAction</comment>
+<comment>  GET:</comment> 		/elemet/{id}  	=>  <comment> getAction</comment>
+<comment>  PUT:</comment> 		/elemet  	=>  <comment> updateAllAction </comment>
+<comment>  PUT:</comment> 		/elemet/{id}	=>  <comment> updateAction </comment>
+<comment>  PATCH:</comment> 	/elemet  	=>  <comment> modifyAllAction </comment>
+<comment>  PATCH:</comment> 	/elemet/{id}  	=>  <comment> modifyAction </comment>
+<comment>  POST:</comment> 	/elemet		=>  <comment> newAction </comment>
+<comment>  DELETE:</comment>	/elemet/{id}  	=>  <comment> removeAction </comment>
+<comment>  LINK:</comment> 	/elemet/{id}  	=>  <comment> linkAction </comment>
+<comment>  UNLINK:</comment>	/elemet/{id}  	=>  <comment> unlinkAction </comment>
+
+

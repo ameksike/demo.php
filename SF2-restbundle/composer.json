@@ -1,0 +1,20 @@
+{
+    "name": "xetid/rest-bundle",
+    "type": "symfony-bundle",
+    "description": "brinda soporte a Symfony2 para publicar servicios RESTFull",
+    "keywords": ["REST", "RESTFull", "ROA"],
+    "license": "GNU GPL v3.1",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Antonio Membrides Espinosa",
+            "email": "amembrides@xetid.cu"
+        }
+    ],
+    "minimum-stability": "RC",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*"	
+    },
+    "target-dir": "XETID/RestBundle"
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <parameters>
+        <parameter key="xetid.rest.routeadjuster.class">XETID\RestBundle\EventListener\RouteAdjusterListener</parameter>
+        <parameter key="xetid.rest.routeadbuilder.class">XETID\RestBundle\EventListener\RouteBuilderListener</parameter>
+		<parameter key="xetid.rest.dto.class">XETID\RestBundle\Services\DTO</parameter>
+		<parameter key="xetid.rest.resource.class">XETID\RestBundle\Services\Resource</parameter>
+		<parameter key="xetid.rest.typejson.class">XETID\RestBundle\Services\Encoders\TypeJSON</parameter>
+		<parameter key="xetid.rest.typeejson.class">XETID\RestBundle\Services\Encoders\TypeEJSON</parameter>
+		<parameter key="xetid.rest.typehtml.class">XETID\RestBundle\Services\Encoders\TypeHTML</parameter>
+    </parameters>
+
+    <services>
+		<!-- entity services manager -->
+		<service id="dto" class="%xetid.rest.dto.class%"/> 
+		<service id="rest.resource" class="%xetid.rest.resource.class%">
+			<argument type="service" id="service_container" />
+		</service>
+		<!-- out encoder manager -->
+		<service id="type.json" class="%xetid.rest.typejson.class%"/> 
+		<service id="type.ejson" class="%xetid.rest.typeejson.class%"/> 
+		<service id="type.html" class="%xetid.rest.typehtml.class%"/> 
+		<!-- kernel services listener-->
+		<service id="xetid_rest_routeadjuster_listener" class="%xetid.rest.routeadjuster.class%">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="service_container" />
+			<!--tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" /-->
+		</service>
+		<service id="xetid_rest_routeadbuilder_listener" class="%xetid.rest.routeadbuilder.class%">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="service_container" />
+		</service>
+    </services>
+
+</container>
