@@ -1,0 +1,9 @@
+Mon, 19 Jun 2006 10:53:06 +0300 [misc 18248][GetDeviceCapabilitiesFromAgent] ERROR: No user agent
+Fri, 29 Dec 2006 14:22:20 +0200 [taburete 15523][update_cache] Forced cache update started
+Fri, 29 Dec 2006 14:22:24 +0200 [taburete 15523][parse] No XML patch file defined
+Fri, 29 Dec 2006 14:22:29 +0200 [taburete 15523][update_cache] Updating multicache dir
+Fri, 29 Dec 2006 14:22:29 +0200 [taburete 15523][update_cache] Done updating cache
+Thu, 27 May 2010 03:47:47 +0000 [Kruz 1567][_GetDeviceCapabilitiesFromId] ERROR: the id  is not present in wurfl_agents
+Mon, 31 May 2010 11:33:29 +0000 [Kruz 2411][_GetDeviceCapabilitiesFromId] ERROR: the id  is not present in wurfl_agents
+Fri, 22 Oct 2010 09:09:54 +0100 [sigesc 3419][GetDeviceCapabilitiesFromAgent] ERROR: No user agent
+Fri, 22 Oct 2010 09:09:54 +0100 [sigesc 3419][GetDeviceCapabilitiesFromAgent] ERROR: No user agent
