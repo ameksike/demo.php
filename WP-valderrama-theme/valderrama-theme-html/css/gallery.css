@@ -1,0 +1,64 @@
+#menus{
+    margin-top: 25px;
+}
+
+#carousel{
+    box-shadow: 7px 8px 3px -3px #0C500E;
+}
+
+#menus div{
+    left: -25%;
+}
+
+h6{
+    text-align: center;
+    font-size: 16px;
+    font-weight:bold;
+    color: #0C500E;
+    text-shadow: #2d2f2d 2px 2px 4px;
+    margin-bottom: 17px;
+}
+
+.carousel-inner img{
+    width: 100%;
+}
+
+#menus img{
+    width: 70px;
+    height: 70px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    opacity: 0.5;
+}
+#menus img:hover{
+    opacity: 1;
+    cursor: hand; cursor: pointer;
+}
+
+#menus img:active{
+    opacity: 1 !important;
+    box-shadow: 7px 0px 3px -3px #2d2f2d;
+}
+
+.active{
+    opacity: 1 !important;
+    /**box-shadow: 7px 0px 3px -3px #0C500E;*/
+}
+
+div .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    padding-left: 10%;
+    right: 0;
+    width: 100%;
+}
+
+p{
+    width: 80%;
+    text-align: justify;
+    text-shadow: #2d2f2d 2px 2px 4px;
+}
+
+.carousel-caption{
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+}

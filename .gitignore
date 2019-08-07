@@ -2,3 +2,7 @@
 *.svn
 *~*
 svn
+*.o
+*~
+*.idea/*
+.idea

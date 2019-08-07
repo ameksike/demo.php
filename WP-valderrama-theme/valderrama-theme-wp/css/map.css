@@ -1,0 +1,20 @@
+
+html, body, .row, .col-xs-6 { height: 100% }
+
+#mapa{
+    /* width: 100%;*/
+    margin-top: 5px;
+    height: 80%;
+    box-shadow: 4px 8px 9px 0 #0C500E;
+}
+
+.namel{ /* pull-left p */
+    font-size: 20px;
+    margin-top:5px;
+    color: #0c500e;
+    text-shadow: #2d2f2d 2px 2px 4px;
+}
+
+p{
+    text-align: justify;
+}

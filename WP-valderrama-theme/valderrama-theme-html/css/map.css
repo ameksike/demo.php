@@ -1,0 +1,11 @@
+
+/**
+Esta es la prueba de gmap a ver si se o soy un inflador.
+*/
+html, body, .row, .col-xs-6 { height: 100% }
+
+#mapa{
+    /* width: 100%;*/
+    height: 100%;
+    box-shadow: 4px 8px 9px 0 #0C500E;
+}

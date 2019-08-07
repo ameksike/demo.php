@@ -1,0 +1,46 @@
+
+element.style {}
+
+.bs-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 #005500;
+    color: #FFFFFF;
+	position:fixed;
+}
+
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+	font-weight: bold;
+	color: #0c500e;
+	background-color: transparent;
+	border-right: 1px solid #0c500e;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+	color: #000000;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+a {
+	color: #000000;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #D8D8D8;
+}
+
+p:first-letter {
+	display:block;
+    margin:-9px 3px -17 -3px;
+	float:left;
+	color:#0c500e;
+	font-size:44px;
+	font-family:Georgia;
+}
+
+.page-header {
+    border-bottom: 2px solid #0c500e;
+    margin: 40px 0 20px;
+    padding-bottom: 9px;
+    box-shadow: #D8D8D8;
+}
