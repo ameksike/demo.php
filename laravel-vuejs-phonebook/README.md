@@ -1,4 +1,4 @@
-#Laravel VueJs Phonebook Demo Project
+# Laravel VueJs Phonebook Demo Project
 It is a demo written on PHP and JavaScript over Laravel and VueJs framework. Is very simple project with one used services, modules, web component, etc.
 
 # run develop enviroment
