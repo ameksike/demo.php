@@ -1,9 +1,12 @@
---------------------------------------------------------------------------------------------------- set proxy 
-set http_proxy=192.168.3.100:3128
-set https_proxy=192.168.3.100:3128
---------------------------------------------------------------------------------------------------- create new project
+#Laravel VueJs Phonebook Demo Project
+It is a demo written on PHP and JavaScript over Laravel and VueJs framework. Is very simple project with one used services, modules, web component, etc.
 
-php composer.phar create-project --prefer-dist laravel/laravel laravel-phonebook
+# run develop enviroment
+- php artisan serve
+- npm run watch
+
+# create new project
+- php composer.phar create-project --prefer-dist laravel/laravel laravel-phonebook
   - Installing laravel/laravel (v6.8.0): Downloading (100%)
   - Installing symfony/polyfill-ctype (v1.13.1): Downloading (100%)
   - Installing phpoption/phpoption (1.7.2): Downloading (100%)
@@ -90,19 +93,16 @@ php composer.phar create-project --prefer-dist laravel/laravel laravel-phonebook
   - Installing phar-io/manifest (1.0.3): Downloading (connecting...)
   - Installing myclabs/deep-copy (1.9.4): Downloading (100%)
   - Installing phpunit/phpunit (8.5.1): Downloading (100%)
-  
-php composer.phar require laravel/ui
+- php composer.phar require laravel/ui
   - Installing laravel/ui (v1.1.2): Downloading (100%)
-php artisan ui vue --auth
-npm install 
-npm run dev
+- php artisan ui vue --auth
+- npm install 
+- npm run dev
 
+# make a auth
+- php artisan migrate
+- php artisan make:auth
 
-php artisan migrate
-
-php artisan make:auth
-
-
-
-php artisan serve
-npm run watch
+# set proxy 
+set http_proxy=192.168.3.100:3128
+set https_proxy=192.168.3.100:3128
